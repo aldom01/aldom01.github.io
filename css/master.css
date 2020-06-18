@@ -346,15 +346,32 @@ main {
 
 .project-wrapper {
     margin: 0 7px 40px;
+    background: #EAEBDB;
+    padding-bottom: 15px;
 }
 
 .project-image {
     display: grid;
     text-align: center;
 }
+.project-name-wrapper {
+    margin-top: 10px;
+}
+
+.project-name-wrapper span :hover {
+    background: #2E3235;
+    color: #f3f3f3;
+}
 
 .project-name a {
-    color: #121212;
+    border: 1px solid #121212;
+    background: #f3f3f3;
+    color: #232b2b;
+    padding: 0.25rem 0.75rem;
+}
+
+.project-name > span a:hover {
+    transition: 1s ease-in;
 }
 
 .social-links {
