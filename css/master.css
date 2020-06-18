@@ -1,0 +1,457 @@
+
+:root {
+    --primary-color: rgba {13,110,139,0.75};
+    --overlay-color: rgba{24,39,51,0.85};
+    --menu-speed: 0.75s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #F3F3F3;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+li {
+    text-decoration: none;
+    list-style: none;
+    color: #000;
+}
+
+
+
+/*ID AND CLASS STYLES*/
+
+.content-wrapper {
+    max-width: 960px;
+    margin: auto;
+    padding: 0 3rem;
+    overflow: hidden;
+}
+
+.hero-section {
+    background: rgba(18,18,18,0.75);
+    color: #F3F3F3;
+    height: 100vh;
+    position: relative;
+}
+
+.hero-section::before {
+    content: "";
+    background: url(/aldom.github.io/images/yancy-min.png) no-repeat center center/cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-section .content-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.hero-section h1 {
+    font-size: 2.6rem;
+}
+
+.hero-section p {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+    color: rgba(217, 30, 24, 1);
+    font-weight: 600;
+}
+
+.hero-section .btn {
+    display: inline-block;
+    border: 1px solid #F3F3F3;
+    background: rgba(18,18,18);
+    color: #F3F3F3;
+    margin-top: 3rem;
+    padding: 0.55rem 1.5rem;
+    transition: 1s ease-in;
+}
+
+.hero-section .btn:hover {
+    background: #F3F3F3;
+    color: rgba(18,18,18);
+}
+
+/*menu and hamburger*/
+
+.menu-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.menu-wrapper .toggler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+}
+
+.menu-wrapper .hamburger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    background: rgba(18,18,18,0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*hamburger line*/
+
+.menu-wrapper .hamburger > div {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background: #F3F3F3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+/* top and bottom line*/
+
+.menu-wrapper .hamburger > div::before,
+.menu-wrapper .hamburger > div::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    width: 100%;
+    height: 2px;
+    background: #F3F3F3;
+}
+
+/*moves line down*/
+
+.menu-wrapper .hamburger > div::after {
+    top: 10px;
+}
+
+/*Toggler animation*/
+
+.menu-wrapper .toggler:checked + .hamburger > div  {
+    transform: rotate(135deg);
+}
+
+/*Turns line into x*/
+
+.menu-wrapper .toggler:checked + .hamburger > div::before,
+.menu-wrapper .toggler:checked + .hamburger > div::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+/*Rotate on hover when checked*/
+
+.menu-wrapper .toggler:checked:hover + .hamburger > div {
+    transform: rotate(225deg);
+}
+
+/*Show menu*/
+
+.menu-wrapper .toggler:checked ~ .menu {
+    visibility: visible;
+}
+
+.menu-wrapper .toggler:checked ~ .menu > div {
+    transform: scale(1);
+    transition-duration: var(--menu-speed);
+}
+
+.menu-wrapper .toggler:checked ~ .menu > div > div {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.menu-wrapper .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-wrapper .menu > div {
+    background: rgba(18,18,18, 0.95);
+    border-radius: 80%;
+    width: 200vw;
+    height: 200vh;
+    display: flex;
+    flex: none;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition: all 0.4s ease;
+}
+
+.menu-wrapper .menu > div > div {
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.menu-wrapper .menu > div > div ul li {
+    list-style: none;
+    color: #F3F3F3;
+    font-size: 1.5rem;
+    padding: 1.2rem;
+}
+
+.menu-wrapper .menu > div > div ul li > a {
+    transition: color 0.4s ease;
+}
+
+.menu a {
+    color: rgba(217, 30, 24, 1);
+}
+
+
+/*MAIN BODY STYLES*/
+
+main {
+    margin-top: 50px;
+}
+
+.services {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    margin: 100px auto;
+}
+
+.services .services-img {
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.services h3 {
+    color: #3e3e3e;
+    margin-bottom: 20px;
+}
+
+.services p {
+    margin-bottom: 20px;
+    color: #808080;
+    font-weight: 300;
+}
+
+.story-wrapper {
+    background: #4d6466;
+}
+
+.story {
+    width: 80%;
+    position: relative;
+    top: 0;
+    left: 150px;
+    line-height: 1.8rem;
+    margin-top: 40px;
+    color: #f3f3f3;
+    padding-bottom: 30px;
+}
+
+.story h3 {
+    font-size: 1.8rem;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.story img {
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.story-heading span {
+    border-bottom: 2px solid rgb(139, 53, 50);
+}
+
+.story-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.story-section {
+    display: grid;
+    grid-template-columns: 4fr 4fr;
+    grid-column-gap: 5rem;
+    margin: 0 4rem;
+}
+
+.story-section p {
+    margin-bottom: 20px;
+}
+
+.project-section {
+    text-align: center;
+    background: #F3F3F3;
+}
+
+.project-section h3{
+    font-size: 1.8rem;
+    padding-top: 30px;
+    color: #121212;
+}
+
+.project-section h3 span{
+    border-bottom: 2px solid rgb(139, 53, 50);
+}
+
+.project-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.project-wrapper {
+    margin: 0 7px 40px;
+}
+
+.project-image {
+    display: grid;
+    text-align: center;
+}
+
+.project-name a {
+    color: #121212;
+}
+
+.social-links {
+    background:#ffffff;
+    text-align: center;
+    margin: 30px auto;
+    padding: 20px;
+    border-top: 1px solid #121212;
+    border-bottom: 1px solid #121212;
+}
+
+.social-links h3{
+    color: #d42426;
+    margin-bottom: 40px;
+}
+
+.social-links a {
+    margin: 30px;
+}
+
+footer {
+    height: 60px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: #121212;
+    vertical-align: middle;
+}
+
+
+
+
+/*MEDIA QUERIES*/
+
+/* PHONE */
+
+@media screen and (min-width: 320px) and (max-width: 450px) {
+
+    .menu-wrapper {
+        position: fixed;
+    }
+
+    .hero-section h1 {
+        font-size: 1.3rem;
+    }
+
+    .services {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0 3.5rem;
+    }
+
+    .services > div {
+        margin-bottom: 20px;
+    }
+
+    .story {
+        width: 100%;
+        left: 5px;
+    }
+
+    .story-section {
+        display: flex;
+        flex-direction: column;
+        margin: 0 4rem;
+    }
+
+    .story-section p {
+        margin-bottom: 20px;
+    }
+
+    .story img {
+        margin-top: 0px;
+        margin-left: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+
+/*Tablet*/
+
+@media screen and (min-width: 758px) and (max-width: 1024px) {
+
+    .menu-wrapper {
+        position: fixed;
+    }
+    
+    .story {
+        width: 100%;
+        left: 5px;
+    }
+
+    .story img {
+        margin-top: 90px;
+    }
+}
+/*Desktops*/
